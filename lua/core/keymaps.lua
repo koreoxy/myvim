@@ -53,7 +53,7 @@ vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
 vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 
 -- Toggle line wrapping
-vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
+vim.keymap.set('n', '<A-z>', '<cmd>set wrap!<CR>', opts)
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', opts)
@@ -67,3 +67,21 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- ============================================================================
+-- Clipboard Copy/Paste Keymaps
+-- Gunakan Ctrl+C untuk menyalin (copy) dan Ctrl+V untuk menempel (paste)
+-- Pastikan Neovim sudah mendukung clipboard (lihat :version untuk +clipboard)
+-- ============================================================================
+
+-- Visual mode: Copy teks yang dipilih ke clipboard sistem dengan Ctrl+C
+vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true, desc = 'Copy to system clipboard' })
+
+-- Normal mode: Copy baris saat kursor berada di baris tersebut dengan Ctrl+C
+vim.keymap.set('n', '<C-c>', '"+yy', { noremap = true, silent = true, desc = 'Copy current line to system clipboard' })
+
+-- Normal mode: Paste dari clipboard sistem dengan Ctrl+V
+vim.keymap.set('n', '<C-v>', '"+p', { noremap = true, silent = true, desc = 'Paste from system clipboard' })
+
+-- Insert mode: Paste dari clipboard sistem dengan Ctrl+V
+vim.keymap.set('i', '<C-v>', '<C-r>+', { noremap = true, silent = true, desc = 'Paste from system clipboard' })

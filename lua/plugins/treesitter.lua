@@ -31,7 +31,6 @@ return {
       'css',
       'html',
       'php',
-      'blade', -- Tambahkan Blade di sini
     },
     auto_install = true,
     highlight = {

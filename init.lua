@@ -27,7 +27,6 @@ require('lazy').setup {
   require 'plugins.gitsigns',
   require 'plugins.indent-blankline',
   require 'plugins.blade-formatter',
-  require 'plugins.type-blade',
   require 'plugins.alpha',
   require 'plugins.misc',
 }
