@@ -1,20 +1,35 @@
 return {
-    'Shatur/neovim-ayu',
-    lazy = false,
-    priority = 1000,
-    config = function()
-        -- Memuat tema Ayu
-        vim.cmd('colorscheme ayu')
+  'bluz71/vim-moonfly-colors',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    -- Terapkan colorscheme Moonfly
+    vim.cmd 'colorscheme moonfly'
 
-        -- Membuat latar belakang transparan
-        vim.cmd('hi Normal guibg=NONE')        -- Menetapkan latar belakang Normal menjadi transparan
-        vim.cmd('hi NormalNC guibg=NONE')      -- Menetapkan latar belakang NormalNC menjadi transparan (untuk window non-fokus)
-        vim.cmd('hi StatusLine guibg=NONE')    -- Menetapkan latar belakang StatusLine menjadi transparan
-        vim.cmd('hi VertSplit guibg=NONE')     -- Menetapkan latar belakang VertSplit menjadi transparan
-        vim.cmd('hi SignColumn guibg=NONE')    -- Menetapkan latar belakang SignColumn menjadi transparan
+    -- Atur background menjadi transparan
+    vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
+    vim.cmd [[highlight NormalNC guibg=NONE ctermbg=NONE]]
+    vim.cmd [[highlight SignColumn guibg=NONE]]
+    vim.cmd [[highlight VertSplit guibg=NONE]]
+    vim.cmd [[highlight StatusLine guibg=NONE]]
+    vim.cmd [[highlight StatusLineNC guibg=NONE]]
+    vim.cmd [[highlight LineNr guibg=NONE]]
+    vim.cmd [[highlight Folded guibg=NONE]]
+    vim.cmd [[highlight NonText guibg=NONE]]
 
-        -- Memberikan kontras warna pada angka baris tanpa latar belakang
-        vim.cmd('hi LineNr guifg=#A8A8A8')  -- Menetapkan warna angka baris dengan kontras terang (misalnya abu-abu terang)
-        vim.cmd('hi CursorLineNr guifg=#FFCC00')  -- Memberikan warna kontras yang mencolok pada angka baris di baris yang sedang dipilih (misalnya kuning)
+    -- Toggle background transparency
+    local bg_transparent = true
+
+    local toggle_transparency = function()
+      bg_transparent = not bg_transparent
+      if bg_transparent then
+        vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
+        vim.cmd [[highlight NormalNC guibg=NONE ctermbg=NONE]]
+      else
+        vim.cmd [[highlight Normal guibg=#080808 ctermbg=Black]]
+      end
     end
+
+    vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
+  end,
 }
