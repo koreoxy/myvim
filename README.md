@@ -1,2 +1,3 @@
 # Myvim
-![myvim](https://github.com/user-attachments/assets/67437624-420f-40fe-bd4c-a61f53d472fa)
+
+![mybim](https://github.com/user-attachments/assets/ebfbe4ff-3549-42bd-8070-6c6945eab254)
